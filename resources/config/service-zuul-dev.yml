@@ -1,20 +1,20 @@
 zuul:
-  prefix: /api # ¶¨ÒåzuulÂ·ÓÉµÄÇ°×º£¬½«ÇëÇóÂ·¾¶¸ñÊ½±äÎª zuulµØÖ·£º¶Ë¿Ú/prefix
-  strip-prefix: true # ½âÎöÂ·¾¶Ê±£¬ÊÇ·ñÈ¥µôprefix£¬Ä¬ÈÏtrue£¬È¥µô£¬Â·¾¶»á±äÎªÊµ¼ÊmicroserviceµØÖ·£º¶Ë¿ÚºÅ/£¨È¥µôprefixºóµÄ£©ÏÂÒ»¼¶ÇëÇóÂ·¾¶
-  ignored-patterns: /**/admin/** # ºöÂÔÄ³Ğ©Ãô¸ĞÂ·¾¶
-  routes: #¶¨Òå·şÎñ×ª·¢¹æÔò
-    item-service: #item-serviceÕâ¸öÃû×ÖÊÇÈÎÒâĞ´µÄ
-      path: /item/** #Æ¥Åäitem-serviceµÄÇëÇóapp-item·şÎñ
-      #url: http://127.0.0.1:8081 #ÕæÕıµÄÎ¢·şÎñµØÖ·
+  prefix: /api # å®šä¹‰zuulè·¯ç”±çš„å‰ç¼€ï¼Œå°†è¯·æ±‚è·¯å¾„æ ¼å¼å˜ä¸º zuulåœ°å€ï¼šç«¯å£/prefix
+  strip-prefix: true # è§£æè·¯å¾„æ—¶ï¼Œæ˜¯å¦å»æ‰prefixï¼Œé»˜è®¤trueï¼Œå»æ‰ï¼Œè·¯å¾„ä¼šå˜ä¸ºå®é™…microserviceåœ°å€ï¼šç«¯å£å·/ï¼ˆå»æ‰prefixåçš„ï¼‰ä¸‹ä¸€çº§è¯·æ±‚è·¯å¾„
+  ignored-patterns: /**/admin/** # å¿½ç•¥æŸäº›æ•æ„Ÿè·¯å¾„
+  routes: #å®šä¹‰æœåŠ¡è½¬å‘è§„åˆ™
+    item-service: #item-serviceè¿™ä¸ªåå­—æ˜¯ä»»æ„å†™çš„
+      path: /item/** #åŒ¹é…item-serviceçš„è¯·æ±‚app-itemæœåŠ¡
+      #url: http://127.0.0.1:8081 #çœŸæ­£çš„å¾®æœåŠ¡åœ°å€
       serviceid: app-item
-#      strip-prefix: true  # Ã¿¸ö×Ô¶¨ÒåµÄ·şÎñ×ª·¢¹æÔòÖĞÒ²ÓĞÒ»¸ötrip-prefix£¬Ä¬ÈÏtrue£¬ÒâË¼ÊÇÈ¥µôpathÖĞ*Ç°µÄÂ·¾¶£¬½«*Î»ÖÃµØÖ·Æ´½Óµ½url»òÕßserviceid¶ÔÓ¦µÄµØÖ·ºó
+#      strip-prefix: true  # æ¯ä¸ªè‡ªå®šä¹‰çš„æœåŠ¡è½¬å‘è§„åˆ™ä¸­ä¹Ÿæœ‰ä¸€ä¸ªtrip-prefixï¼Œé»˜è®¤trueï¼Œæ„æ€æ˜¯å»æ‰pathä¸­*å‰çš„è·¯å¾„ï¼Œå°†*ä½ç½®åœ°å€æ‹¼æ¥åˆ°urlæˆ–è€…serviceidå¯¹åº”çš„åœ°å€å
       strip-prefix: false
-# Èç localhost:8087/api/item-service/item/1
-# Êµ¼ÊÇëÇóÂ·¾¶Îª£ºlocalhost:8081/item/1 ¼´£ºapp-item ip:port/item/1
-    order-service: #Ãû×Ö¾¡Á¿ºÍÒµÎñÏµÍ³Ïà¹Ø
-      path: /order/** #Æ¥Åäorder-serviceµÄÇëÇóapp-order·şÎñ
+# å¦‚ localhost:8087/api/item-service/item/1
+# å®é™…è¯·æ±‚è·¯å¾„ä¸ºï¼šlocalhost:8081/item/1 å³ï¼šapp-item ip:port/item/1
+    order-service: #åå­—å°½é‡å’Œä¸šåŠ¡ç³»ç»Ÿç›¸å…³
+      path: /order/** #åŒ¹é…order-serviceçš„è¯·æ±‚app-orderæœåŠ¡
       serviceid: app-order
 #      strip-prefix: false
-#Èç localhost:8087/api/order/201810300001
-#Êµ¼ÊÇëÇóÂ·¾¶Îª£ºlocalhost:8082/order/201810300001
-#/order/**¼ÈÖ¸ÏòÁËapp-orderÎ¢·şÎñ£¬Í¬Ê±strip-prefixÎªfalse£¬²»ĞèÒªÈ¥µô£¬Æ´½Ó³ÉÁËorderÎ¢·şÎñÖĞµÄÏÂÒ»¼¶Â·¾¶¡£
+#å¦‚ localhost:8087/api/order/201810300001
+#å®é™…è¯·æ±‚è·¯å¾„ä¸ºï¼šlocalhost:8082/order/201810300001
+#/order/**æ—¢æŒ‡å‘äº†app-orderå¾®æœåŠ¡ï¼ŒåŒæ—¶strip-prefixä¸ºfalseï¼Œä¸éœ€è¦å»æ‰ï¼Œæ‹¼æ¥æˆäº†orderå¾®æœåŠ¡ä¸­çš„ä¸‹ä¸€çº§è·¯å¾„ã€‚
