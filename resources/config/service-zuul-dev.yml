@@ -1,0 +1,20 @@
+zuul:
+  prefix: /api # 定义zuul路由的前缀，将请求路径格式变为 zuul地址：端口/prefix
+  strip-prefix: true # 解析路径时，是否去掉prefix，默认true，去掉，路径会变为实际microservice地址：端口号/（去掉prefix后的）下一级请求路径
+  ignored-patterns: /**/admin/** # 忽略某些敏感路径
+  routes: #定义服务转发规则
+    item-service: #item-service这个名字是任意写的
+      path: /item/** #匹配item-service的请求app-item服务
+      #url: http://127.0.0.1:8081 #真正的微服务地址
+      serviceid: app-item
+#      strip-prefix: true  # 每个自定义的服务转发规则中也有一个trip-prefix，默认true，意思是去掉path中*前的路径，将*位置地址拼接到url或者serviceid对应的地址后
+      strip-prefix: false
+# 如 localhost:8087/api/item-service/item/1
+# 实际请求路径为：localhost:8081/item/1 即：app-item ip:port/item/1
+    order-service: #名字尽量和业务系统相关
+      path: /order/** #匹配order-service的请求app-order服务
+      serviceid: app-order
+#      strip-prefix: false
+#如 localhost:8087/api/order/201810300001
+#实际请求路径为：localhost:8082/order/201810300001
+#/order/**既指向了app-order微服务，同时strip-prefix为false，不需要去掉，拼接成了order微服务中的下一级路径。
